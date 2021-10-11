@@ -13,7 +13,7 @@ As such, no structural properties of the proteins were taken into account for mo
 
 For the neural network approach, an encoder-decoder model was constructed. Encoder-decoder models are an alternative way of structuring Recurrent Neural Networks (RNNs) for sequence-to-sequence prediction problems.
 
-<img src="./images/aaa.png" alt="drawing" width="400"/>
+<img src="./images/aaa.png" alt="drawing" width="500"/>
 
 The encoder-decoder models were originally developed for machine translation problems,
 although they have been successfully adapted for a vast majority of other Natural Language
@@ -32,7 +32,7 @@ sequence.
 ● The inference_decoder model used when making a prediction for a new source
 sequence.
 
-<img src="./images/aab.png" alt="drawing" width="400"/>
+<img src="./images/aab.png" alt="drawing" width="500"/>
 
 ## Data Preprocessing and Model Assumptions
 
@@ -56,8 +56,8 @@ Following sequence selection, 228 sequences were filtered in and included in the
 
 Upon dataset structuring, further preprocessing was carried out, which was mainly focused on not obstructing our neural network’s performance. Among the sequences that were chosen for the dataset, several were significantly longer than the rest as shown in the figure below (left panel), throwing the model out of balance.
 
-<img src="./images/aac.jpeg" alt="drawing" width="500"/>
-<img src="./images/aad.jpeg" alt="drawing" width="500"/>
+<img src="./images/aac.jpg" alt="drawing" width="500"/>
+<img src="./images/aad.jpg" alt="drawing" width="500"/>
 
 To this end, outlier sequences with a length greater than 1000 amino acids were removed and the final distribution is shown in the plots above (right panel). Upon removal, we observed a significant performance improvement in our model. Most probably, this performance increase is immediately related to the last preprocessing steps, which are described below.
 
