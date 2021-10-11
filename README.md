@@ -13,3 +13,4 @@ As such, no structural properties of the proteins were taken into account for mo
 
 For the neural network approach, an encoder-decoder model was constructed. Encoder-decoder models are an alternative way of structuring Recurrent Neural Networks (RNNs) for sequence-to-sequence prediction problems.
 
+<img src="./images/aaa.jpg" alt="drawing" width="500"/>
