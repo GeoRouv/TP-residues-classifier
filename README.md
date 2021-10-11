@@ -56,8 +56,8 @@ Following sequence selection, 228 sequences were filtered in and included in the
 
 Upon dataset structuring, further preprocessing was carried out, which was mainly focused on not obstructing our neural network’s performance. Among the sequences that were chosen for the dataset, several were significantly longer than the rest as shown in the figure below (left panel), throwing the model out of balance.
 
-<img src="./images/aac.jpg" alt="drawing" width="500"/>
-<img src="./images/aad.jpg" alt="drawing" width="500"/>
+<img src="./images/aac.jpg" alt="drawing" width="400"/>
+<img src="./images/aad.jpg" alt="drawing" width="400"/>
 
 To this end, outlier sequences with a length greater than 1000 amino acids were removed and the final distribution is shown in the plots above (right panel). Upon removal, we observed a significant performance improvement in our model. Most probably, this performance increase is immediately related to the last preprocessing steps, which are described below.
 
