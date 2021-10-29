@@ -1,7 +1,7 @@
 # TP-residues-classifier
 Classifying residues of transmembrane proteins using a custom Seq2Seq model.
 
-<br><div><img src="./images/protein_molecule.png" width="500"></div><br>
+<br><div><img src="./images/protein_molecule.jpg" width="500"></div><br>
 
 ## Intro
 
