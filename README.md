@@ -1,6 +1,8 @@
 # TP-residues-classifier
 Classifying residues of transmembrane proteins using a custom Seq2Seq model.
 
+<br><div><img src="./readme_images/protein_molecule.png" width="500"></div><br>
+
 ## Intro
 
 The implementation of a neural network for tackling structural bioinformatics problems is not a novel approach, but the implementation of a sequence-to-sequence model for the detection of transmembrane amino acids certainly is. Below we expand on how our neural network model was designed and constructed, and discuss further preprocessing that is particularly significant for the performance of our model.
