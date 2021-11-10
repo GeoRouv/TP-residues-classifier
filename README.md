@@ -3,13 +3,13 @@ Classifying residues of transmembrane proteins using a custom Seq2Seq model.
 
 <br><div><img src="./images/protein_molecule.jpg" width="500"></div><br>
 
-## Intro
+## 📗 Introduction
 
 The implementation of a neural network for tackling structural bioinformatics problems is not a novel approach, but the implementation of a sequence-to-sequence model for the detection of transmembrane amino acids certainly is. Below we expand on how our neural network model was designed and constructed, and discuss further preprocessing that is particularly significant for the performance of our model.
 
-## Design
+## ✏️ Design
 
-We approached the problem of classifying residues as a sequence-to-sequence problem, since an aminoacid sequence would be handed in as input, and the classification of each aminoacid-transmembrane/ non-transmembrane- would be the outputted as a sequence as well, a sequence of zeros and ones. 
+We approached the problem of classifying transmembrane residues as a sequence-to-sequence problem. An aminoacid sequence can be handed in as input, and the classification of each aminoacid as transmembrane or non-transmembrane would be outputted as a sequence of ones and zeroes, respectively. 
 
 As such, no structural properties of the proteins were taken into account for model training or amino acid classification, and the proposed prediction algorithm consists a purely sequence-based approach. 
 
@@ -17,36 +17,32 @@ For the neural network approach, an encoder-decoder model was constructed. Encod
 
 <img src="./images/aaa.png" alt="drawing" width="500"/>
 
-The encoder-decoder models were originally developed for machine translation problems,
-although they have been successfully adapted for a vast majority of other Natural Language
-Processing (NLP) tasks.
+The encoder-decoder models were originally developed for machine translation problems, although they have been successfully adapted for a vast majority of other Natural Language Processing (NLP) tasks.
 
-The approach we followed involves two recurrent neural networks, one to encode the source
-sequence, called the encoder, and a second one to decode the encoded source sequence into
-the target sequence, called the decoder.
+The approach we followed involves two recurrent neural networks, one to encode the source sequence, called the encoder, and a second one to decode the encoded source sequence into the target sequence, called the decoder.
 
 To be more precise, the seq-to-seq model proposed here consists of 3 submodels:
 
-● The train model that can be trained given the source, target, and shifted target
+● The *train model* that can be trained given the source, target, and shifted target
 sequences.
-● The inference_encoder model used when making a prediction for a new source
+● The *inference_encoder* model used when making a prediction for a new source
 sequence.
-● The inference_decoder model used when making a prediction for a new source
+● The *inference_decoder* model used when making a prediction for a new source
 sequence.
 
 <img src="./images/aab.png" alt="drawing" width="500"/>
 
-## Data Preprocessing and Model Assumptions
+## 📈 Data Preprocessing and Model Assumptions
 
 In the absence of ground-truth experimental results that can be used for the training and validation of our models, protein sequence and amino acid classification information were adapted from the OPM database. OPM is the leading state-of-the-art approach for the prediction of the transmembrane region of membrane proteins and incorporates an energy minimization scheme in order to achieve this.
 
-Data from OPM was downloaded through the assemblies/localizations pages, for all the transmembrane proteins. Upon data review and inspection, we noted the following issues with the dataset at hand.
+Data from OPM was downloaded through the `assemblies/localizations` pages, for all the transmembrane proteins. Upon data review and inspection, we noted the following issues with the dataset at hand.
 
-First and foremost, there were several instances of protein with multiple representations in PDB, for example the sucrose-specific porin (Salmonella typhimurium) has two PDB entries,1A0S and 1A0T, which are both included in the OPM dataset. However, multiple representations of the same protein do not enrich the seq-to-seq model in any way, since this situation practically equates to multiple instances of the same amino acid sequence.
+First and foremost, there were several instances of protein with multiple representations in PDB, for example the sucrose-specific porin (*Salmonella typhimurium*) has two PDB entries, 1A0S and 1A0T, which are both included in the OPM dataset. However, multiple representations of the same protein do not enrich the seq-to-seq model in any way, since this situation practically equates to multiple instances of the same amino acid sequence.
 
 A similar behavior to what is explained above was also evident for plenty of protein representations that contained different chains of the same sequence. In that case, only one of the chains was retained as well. Therefore, since only one sequence is enough for our model, the dataset was preprocessed for sequence duplicate removals.
 
-Another issue that was present in several protein representations was the classification of all amino acids as non-transmembrane. Of course, since the main focus of this project is to classify transmembrane amino acids, and taking into account that all the previously studied proteins are indeed validated as transmembrane, it did not make biological sense to keep erroneous classification of transmembrane aminoacids as non-transmembrane. Such instances were filtered out.
+Another issue that was present in several protein representations was the classification of **all** amino acids as non-transmembrane. Of course, since the main focus of this project is to classify transmembrane amino acids, and taking into account that all the previously studied proteins are indeed validated as transmembrane, it did not make biological sense to keep erroneous classification of transmembrane aminoacids as non-transmembrane. Such instances were filtered out.
 
 The last assumption made during the data preprocessing step -in the case of multiple instances of the same amino acid sequence- was retaining the instance with the maximum number of amino acids classified as transmembrane. For example, protein 1A0S contains three chains -P, Q, and R- with the same sequence, with different amino acid classifications for each of the three chains; chain P had 163 amino acids classified as transmembrane, chain Q had 167, and chain R had 164.
 
