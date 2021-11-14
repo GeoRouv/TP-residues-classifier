@@ -23,11 +23,11 @@ The approach we followed involves two recurrent neural networks, one to encode t
 
 To be more precise, the seq-to-seq model proposed here consists of 3 submodels:
 
-● The *train model* that can be trained given the source, target, and shifted target
+* The *train model* that can be trained given the source, target, and shifted target
 sequences.
-● The *inference_encoder* model used when making a prediction for a new source
+* The *inference_encoder* model used when making a prediction for a new source
 sequence.
-● The *inference_decoder* model used when making a prediction for a new source
+* The *inference_decoder* model used when making a prediction for a new source
 sequence.
 
 <img src="./images/aab.png" alt="drawing" width="500"/>
